@@ -1,4 +1,7 @@
 const ventasSchema = require("../models/ventas");
+const vendedorSchema=require('../models/vendedores')
+const clienteSchema=require('../models/clientes')
+const vehiculoSchema=require('../models/vehiculos')
 
 const getVentas = (req, res) => {
 
@@ -25,9 +28,26 @@ const postVenta = async (req, res) => {
       pago: req.body.pago,
       devolucion: req.body.devolucion,
     });
-
-    const ventaGuardada = await nuevaVenta.save();
-    res.status(201).json(ventaGuardada);
+    const vendedorB= await vendedorSchema.findById(req.body.vendedor)
+if (!vendedorB) {
+  return res.status(404).json({ message: 'Vendedor no encontrado' });
+}
+const clienteB= await clienteSchema.findById(req.body.cliente)
+if (!clienteB) {
+  return res.status(404).json({ message: 'cliente no encontrado' });
+}
+const vehiculoB= await vehiculoSchema.findById(req.body.vehiculo)
+if (!vehiculoB) {
+  return res.status(404).json({ message: 'vehiculo no encontrado' });
+}
+vendedorB.__v++;
+vendedorB.save();
+clienteB.__v++;
+clienteB.save();
+vehiculoB.__v++;
+vehiculoB.save();
+ const ventaGuardada = await nuevaVenta.save();
+    res.status(201).json(vehiculoB);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
