@@ -18,9 +18,11 @@ const getClientes = (req, res) => {
 };
 
 const putClients = (req, res) => {
+
       clienteSchema.findByIdAndUpdate(req.params.id, req.body, { new: true })
             .then(data => res.json(data))
             .catch(err => res.status(400).json({ error: err.message }));
+            
 }
 
 module.exports = {

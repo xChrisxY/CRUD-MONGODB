@@ -6,6 +6,8 @@ const vehiculoSchema = new mongoose.Schema({
   color: String,
   precio: Number,
   nuevo: Boolean, 
+}, {
+  versionKey : false
 });
 
 const Vehiculo = mongoose.model('Vehiculo', vehiculoSchema);

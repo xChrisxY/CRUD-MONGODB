@@ -26,11 +26,10 @@ const putVendedor = (req, res) => {
 
 const eliminarVendedor = async (req, res) => {
   try {
-    const vendedor1 = await vendedores.findById(req.params.id);
-    if (!vendedor1) {
+    const vendedor = await vendedores.findById(req.params.id);
+    if (!vendedor) {
       return res.status(404).json({ message: 'Vendedor no encontrado' });
-    }
-    const ventas =await ventasSchema.findByIdAndDelete({vendedor:vendedor1.id})
+    }    
     res.json({ ventas });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -13,10 +13,12 @@ const cliente = require('./routes/clientes');
 const ventas =require('./routes/ventas')
 const vehiculo=require('./routes/vehiculos')
 const vendedor =require('./routes/vendedores')
+const devoluciones = require('./routes/devoluciones')
 app.use('/api',vehiculo)
 app.use('/api',ventas)
 app.use('/api', cliente)
 app.use('/api',vendedor)
+app.use('/api', devoluciones)
 
 
 app.listen(PORT, () => {

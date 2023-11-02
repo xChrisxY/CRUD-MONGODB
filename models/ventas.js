@@ -6,7 +6,8 @@ const ventaSchema = new mongoose.Schema({
   vendedor: { type: mongoose.Schema.Types.ObjectId, ref: 'Vendedor' },
   vehiculo: { type: mongoose.Schema.Types.ObjectId, ref: 'Vehiculo' },
   pago: Number,
-  devolucion: Number,
+},{
+  versionKey : false
 });
 
 const Venta = mongoose.model('Venta', ventaSchema);

@@ -11,6 +11,8 @@ const clienteSchema = new mongoose.Schema({
       precioCompra: Number,
     },
   ],
+}, {
+  versionKey : false
 });
 
 const Cliente = mongoose.model('Cliente', clienteSchema);
